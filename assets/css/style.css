@@ -1,0 +1,543 @@
+@import "defaults.css";
+@import "feed-item.css";
+@import "modal.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 0.875rem;
+  background-color: var(--background-color);
+  margin: 0;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 65rem;
+  margin: auto;
+}
+
+header {
+  background-color: var(--primary-light-color);
+  height: 3rem;
+  box-shadow: 0px 0px 4px var(--secondary-text-color);
+  position: relative;
+  z-index: 99;
+}
+
+header .container {
+  display: flex;
+  height: inherit;
+}
+
+header .logo {
+  width: 12.5rem;
+  display: flex;
+  align-items: center;
+}
+
+header .logo a {
+  display: flex;
+}
+
+header .logo img {
+  height: 1.25rem;
+}
+
+header .head-side {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.head-side .head-side-left {
+  display: flex;
+}
+
+.head-side .head-side-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-area input {
+  color: var(--primary-text-color);
+  background-color: var(--primary-color);
+  background-image: url("../images/search.png");
+  background-size: 0.875rem;
+  background-position-x: 0.5rem;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  width: 12.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  border: 0;
+  outline: 0;
+  padding-left: 2rem;
+  transition: all 0.3s;
+}
+
+::placeholder {
+  color: var(--placeholder-color);
+}
+
+.search-area input:focus {
+  width: 19rem;
+  background-color: var(--background-light-color);
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.user-area-text {
+  color: var(--background-light-color);
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.user-area-icon {
+  margin-right: 0.25rem;
+}
+
+.user-area-icon img {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.user-area-box {
+  width: 6.25rem;
+  height: 6.25rem;
+  position: absolute;
+  background-color: var(--background-light-color);
+  top: 3rem;
+}
+
+.user-logout {
+  display: block;
+  margin-left: 1rem;
+}
+
+.user-logout img {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.main {
+  display: flex;
+}
+
+.main aside {
+  width: 11.875rem;
+  margin-right: 0.5rem;
+}
+
+.main aside nav a {
+  text-decoration: none;
+  display: block;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.menu-splitter {
+  border-top: 1px solid var(--lines-dark-color);
+  margin-bottom: 0.25rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border: 1px solid var(--background-color);
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: var(--background-hover-color);
+  border: 1px solid var(--lines-dark-color);
+}
+
+.menu-item-icon {
+  width: 1rem;
+  margin-right: 0.5rem;
+  margin-left: 0.25rem;
+}
+
+.menu-item-text {
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.menu-item-badge {
+  background-color: var(--background-hover-color);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.main .feed {
+  flex: 1;
+}
+
+.feed .box {
+  background-color: var(--background-light-color);
+  border: 1px solid var(--lines-color);
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.box .box-header {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box .box-header-text {
+  flex: 1;
+}
+
+.box .box-header-text span {
+  color: var(--secondary-text-color);
+}
+
+.box .box-header-buttons a {
+  font-size: 0.875rem;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+}
+
+.box .box-body img {
+  max-width: 100%;
+}
+
+.feed .border-top-flat {
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.feed .row {
+  display: flex;
+}
+
+.feed .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.feed .side {
+  flex: none;
+  width: 16rem;
+}
+
+.feed-new-editor {
+  align-items: center;
+}
+
+.feed-new-avatar {
+  margin-right: 0.5rem;
+}
+
+.feed-new-avatar img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.feed-new-input-placeholder {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--secondary-text-color);
+}
+
+.feed-new-input {
+  flex: 1;
+  outline: 0;
+  border: 0;
+  font-size: 0.875rem;
+  display: none;
+  color: var(--secondary-text-color);
+}
+
+.feed-new-send {
+  cursor: pointer;
+  margin-right: 0.25rem;
+}
+
+.feed-new-send img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.banners .box-body {
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.banners .box-body a {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.profile-cover {
+  height: 16rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-info {
+  align-items: center;
+}
+
+.profile-info-avatar {
+  margin-right: 1rem;
+}
+
+.profile-info-avatar img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.profile-info-name {
+  flex: 1;
+}
+
+.profile-info-name-text {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-info-name-text a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.profile-info-location {
+  color: var(--info-color);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  background-image: url("../images/pin.png");
+  background-size: auto 1rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 1.25rem;
+}
+
+.profile-info-item {
+  text-align: center;
+}
+
+.profile-info-item-n {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+
+.profile-info-item-s {
+  font-size: 0.875rem;
+  color: var(--secondary-text-color);
+}
+
+.user-info-mini {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem;
+  color: var(--info-color);
+  font-size: 0.875rem;
+}
+
+.user-info-mini img {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1rem;
+}
+
+.friend-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.full-friend-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.friend-icon {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.friend-icon a {
+  text-decoration: none;
+}
+
+.friend-icon-avatar {
+  margin-bottom: 0.25rem;
+}
+
+.friend-icon-avatar img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.friend-icon-name {
+  width: 3.75rem;
+  font-size: 0.875rem;
+  margin: auto;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-photo-item {
+  margin-right: 0.5rem;
+}
+
+.user-photo-item:last-child {
+  margin-right: 0;
+}
+
+.user-photo-item img {
+  max-width: 100%;
+}
+
+.tabs {
+  border-bottom: 1px solid var(--lines-dark-color);
+  display: flex;
+}
+
+.tab-item {
+  padding: 1.25rem;
+  font-size: 1rem;
+  color: var(--secondary-text-color);
+  border-bottom: 2px solid var(--background-light-color);
+  cursor: pointer;
+}
+
+.tab-item:hover {
+  color: var(--primary-color);
+}
+
+.tab-item.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-light-color);
+}
+
+.tab-body {
+  display: none;
+  padding: 0.5rem 0;
+}
+
+.full-user-photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1.25rem;
+}
+
+.full-user-photos .user-photo-item {
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  header .head-side-right {
+    display: none !important;
+  }
+
+  header .logo {
+    margin-left: 0.5rem;
+  }
+
+  .search-area input {
+    width: 2rem;
+  }
+
+  .search-area input:focus {
+    width: 9rem;
+  }
+
+  header .head-side {
+    justify-content: flex-end;
+  }
+
+  .head-side-left {
+    margin-right: 0.5rem;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .main aside {
+    width: 100%;
+  }
+
+  aside nav {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 0.5rem;
+  }
+
+  .main aside nav a {
+    margin-right: 1rem;
+  }
+
+  .menu-splitter {
+    display: none;
+  }
+
+  .menu-item-badge {
+    display: none;
+  }
+
+  .menu-item-text {
+    margin-right: 0.25rem;
+  }
+
+  .feed .side {
+    display: none;
+  }
+
+  .feed > .row > .column {
+    padding: 0 0.5rem;
+  }
+
+  .profile-cover {
+    height: 9rem;
+  }
+
+  .profile-info {
+    flex-direction: column;
+  }
+
+  .profile-info-name {
+    margin-top: 0.5rem;
+  }
+
+  .profile-info-data {
+    margin-top: 2rem;
+  }
+
+  .full-friend-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .full-user-photos {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
