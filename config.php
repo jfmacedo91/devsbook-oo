@@ -1,5 +1,7 @@
 <?php
-  $base = 'http://localhost/devsbook-oo';
+  session_start();
+
+  $baseURL = 'http://localhost/devsbook-oo';
   $db_name = 'devsbook';
   $db_host = 'localhost';
   $db_user = 'root';
