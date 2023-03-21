@@ -1,0 +1,98 @@
+@import "defaults.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Signika Negative", sans-serif;
+}
+
+body {
+  font-size: 0.75rem;
+  background-color: var(--background-color);
+  margin: 0;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 65rem;
+  margin: auto;
+}
+
+header {
+  background-color: var(--primary-light-color);
+  height: 3rem;
+  box-shadow: 0px 0px 4px var(--primary-text-color);
+  position: relative;
+  z-index: 99;
+}
+
+header .container {
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  height: 1.25rem;
+}
+
+header a {
+  display: flex;
+}
+
+form {
+  max-width: 25rem;
+  margin: auto;
+  background-color: var(--background-light-color);
+  border: 1px solid var(--lines-color);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+  margin-top: 3rem;
+}
+
+form label {
+  display: block;
+}
+
+form input {
+  display: block;
+}
+
+form .input {
+  font-size: 0.875rem;
+  height: 2.5rem;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background-color: var(--lines-color);
+  border-radius: 0.5rem;
+  padding: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+form .input:focus {
+  background-color: var(--lines-dark-color);
+}
+
+form .button {
+  border: 0;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--primary-light-color);
+  border-radius: 0.5rem;
+  color: var(--text-in-primary-color);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px var(--secondary-text-color);
+}
+
+form .button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+form a {
+  text-decoration: none;
+  color: var(--primary-light-color);
+}

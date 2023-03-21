@@ -1,0 +1,122 @@
+.feed-item-head {
+  align-items: center;
+}
+
+.feed-item-head-photo {
+  margin-right: 1rem;
+}
+
+.feed-item-head-photo img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.fidi-name {
+  color: var(--primary-color);
+  font-size: 1rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.fidi-action,
+.fidi-date {
+  color: var(--secondary-text-color);
+  font-size: 0.875rem;
+}
+
+.feed-item-head-info {
+  flex: 1;
+}
+
+.feed-item-head-btn {
+  margin-right: 0.25rem;
+  cursor: pointer;
+}
+
+.feed-item-head-btn img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.feed-item-body {
+  color: var(--primary-text-color);
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.feed-item-body img {
+  max-width: 100%;
+}
+
+.feed-item-buttons {
+  border-top: 1px solid var(--lines-color);
+  padding: 0.5rem 0;
+}
+
+.like-btn,
+.msg-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 1.5rem;
+  background-size: 1.5rem;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 2.25rem;
+  margin-right: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.like-btn {
+  background-image: url("../images/heart-off.png");
+  color: var(--buttons-color);
+}
+.like-btn.on {
+  background-image: url("../images/heart-on.png");
+  color: var(--like-color);
+}
+
+.msg-btn {
+  background-image: url("../images/comment.png");
+  color: var(--buttons-color);
+}
+
+.feed-item-comments {
+  border-top: 1px solid var(--lines-color);
+}
+
+.fic-item-photo {
+  margin-right: 0.5rem;
+}
+
+.fic-item-photo img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+}
+
+.fic-item-info a {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.fic-item-info {
+  color: var(--primary-text-color);
+  font-size: 0.75rem;
+}
+
+.fic-item-field {
+  flex: 1;
+  height: 2.25rem;
+  border-radius: 1.25rem;
+  border: 0.875rem;
+	outline: 0;
+  background-color: var(--lines-color);
+  font-size: 0.75rem;
+  padding: 0 15px;
+}
