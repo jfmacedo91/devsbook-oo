@@ -4,17 +4,18 @@
   class Auth {
     private $pdo;
     private $baseURL;
+    private $userDao;
 
     public function __construct(PDO $pdo, $baseURL) {
       $this->pdo = $pdo;
       $this->baseURL = $baseURL;
+      $this->userDao = new UserDaoMysql($this->pdo);
     }
 
     public function checkToken() {
       if(!empty($_SESSION['token'])) {
         $token = $_SESSION['token'];
-        $userDao = new UserDaoMysql($this->pdo);
-        $user = $userDao->findByToken($token);
+        $user = $this->userDao->findByToken($token);
 
         if($user) {
           return $user;
@@ -26,13 +27,12 @@
     }
 
     public function validateLogin($email, $password) {
-      $userDao = new UserDaoMysql($this->pdo);
-      $user = $userDao->findByEmail($email);
+      $user = $this->userDao->findByEmail($email);
       if($user) {
         if(password_verify($password, $user->password)) {
           $token = md5(time().mt_rand(0, 9999));
           $user->token = $token;
-          $userDao->update($user);
+          $this->userDao->update($user);
           $_SESSION['token'] = $token;
 
           return true;
@@ -46,6 +46,27 @@
       $_SESSION['flash'] = 'E-mail não encontrado!';
 
       return false;
+    }
+
+    public function emailExists($email) {
+      return $this->userDao->findByEmail($email) ? true : false;
+    }
+
+    public function registerUser($name, $email, $password, $birthdate) {
+      $newUser = new User();
+
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      $token = md5(time().mt_rand(0, 9999));
+
+      $newUser->name = $name;
+      $newUser->email = $email;
+      $newUser->password = $hash;
+      $newUser->birthdate = $birthdate;
+      $newUser->token = $token;
+
+      $newUser = $this->userDao->insert($newUser);
+
+      $_SESSION['token'] = $token;
     }
   }
 ?>
