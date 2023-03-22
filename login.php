@@ -16,7 +16,7 @@
   <body>
     <header>
       <div class="container">
-        <a href="<?= $baseURL; ?>"><img src="<?= $baseURL; ?>/assets/images/devsbook_logo.png" /></a>
+        <a href="<?= $baseURL; ?>"><img src="<?= $baseURL; ?>/assets/images/devsbook_logo.svg" /></a>
       </div>
     </header>
     <section class="container main">
