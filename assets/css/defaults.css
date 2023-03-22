@@ -1,10 +1,10 @@
 :root {
 	--primary-color: #035E30;
 	--primary-light-color: #058F4A;
-	--primary-hover-color: #07C063;
-	--buttons-color: #09F17D;
-  --info-color: #35F896;
-  --placeholder-color: #66F9B0;
+	--primary-hover-color: #035E30;
+	--buttons-color: #07C063;
+  --info-color: #09F17D;
+  --placeholder-color: #35F896;
 	--primary-text-color: #272E35;
 	--text-in-primary-color: #F9FAFB;
 	--background-light-color: #F9FAFB;
@@ -15,6 +15,20 @@
 	--secondary-text-color: #8F99A3;
 	--like-color: #EB6262;
 	--like-color-20: #EB626233;
+  --shadow-color: #00000051;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --primary-text-color: #F9FAFB;
+    --text-in-primary-color: #F9FAFB;
+    --background-light-color: #272E35;
+    --background-color: #101418;
+    --lines-color: #56616C;
+    --lines-dark-color: #3F4750;
+    --background-hover-color: #56616C99;
+    --secondary-text-color: #75808A;
+  }
 }
 
 .flex-1 {
