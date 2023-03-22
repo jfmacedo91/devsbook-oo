@@ -1,20 +1,20 @@
 :root {
-	--primary-color: #227A3F;
-	--primary-light-color: #4AA869;
-	--primary-hover-color: #47BB6E;
-  --placeholder-color: #A2C9AF;
-	--primary-text-color: #333333;
-	--text-in-primary-color: #FFFFFF;
-	--secondary-text-color: #999999;
-	--buttons-color: #5F9571;
-  --info-color: #81B994;
+	--primary-color: #035E30;
+	--primary-light-color: #058F4A;
+	--primary-hover-color: #07C063;
+	--buttons-color: #09F17D;
+  --info-color: #35F896;
+  --placeholder-color: #66F9B0;
+	--primary-text-color: #272E35;
+	--text-in-primary-color: #F9FAFB;
+	--background-light-color: #F9FAFB;
+	--background-color: #E1E5EA;
+	--lines-color: #C5CCD3;
+	--lines-dark-color: #A9B2BC;
+  --background-hover-color: #A9B2BC99;
+	--secondary-text-color: #8F99A3;
 	--like-color: #EB6262;
-	--like-color-20: #EB626251;
-	--lines-color: #E9E9E9;
-	--lines-dark-color: #D9D9D9;
-	--background-color: #EDF0EE;
-  --background-hover-color: #D1E0D699;
-	--background-light-color: #FFFFFF;
+	--like-color-20: #EB626233;
 }
 
 .flex-1 {

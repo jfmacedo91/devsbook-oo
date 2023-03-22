@@ -77,14 +77,14 @@ form .input {
   width: 100%;
   outline: 0;
   border: 0;
-  background-color: var(--lines-color);
+  background-color: var(--background-color);
   border-radius: 0.5rem;
   padding: 0.875rem;
   margin-bottom: 0.5rem;
 }
 
 form .input:focus {
-  background-color: var(--lines-dark-color);
+  background-color: var(--lines-color);
 }
 
 form .button {
