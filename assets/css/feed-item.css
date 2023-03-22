@@ -13,7 +13,7 @@
 }
 
 .fidi-name {
-  color: var(--primary-color);
+  color: var(--primary-light-color);
   font-size: 1rem;
   display: inline-block;
   margin-right: 0.25rem;
@@ -70,16 +70,16 @@
 }
 
 .like-btn {
-  background-image: url("../images/heart-off.png");
+  background-image: url("../images/heart-off.svg");
   color: var(--buttons-color);
 }
 .like-btn.on {
-  background-image: url("../images/heart-on.png");
+  background-image: url("../images/heart-on.svg");
   color: var(--like-color);
 }
 
 .msg-btn {
-  background-image: url("../images/comment.png");
+  background-image: url("../images/comment.svg");
   color: var(--buttons-color);
 }
 
@@ -100,7 +100,7 @@
 .fic-item-info a {
   display: block;
   margin-bottom: 0.25rem;
-  color: var(--primary-color);
+  color: var(--primary-light-color);
   font-size: 0.875rem;
   text-decoration: none;
 }
@@ -116,7 +116,7 @@
   border-radius: 1.25rem;
   border: 0.875rem;
 	outline: 0;
-  background-color: var(--lines-color);
+  background-color: var(--background-color);
   font-size: 0.75rem;
   padding: 0 15px;
 }

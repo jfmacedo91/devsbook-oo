@@ -4,7 +4,7 @@
 	--primary-hover-color: #035E30;
 	--buttons-color: #07C063;
   --info-color: #09F17D;
-  --placeholder-color: #35F896;
+  --placeholder-color: #07C063;
 	--primary-text-color: #272E35;
 	--text-in-primary-color: #F9FAFB;
 	--background-light-color: #F9FAFB;
@@ -26,7 +26,7 @@
     --background-color: #101418;
     --lines-color: #56616C;
     --lines-dark-color: #3F4750;
-    --background-hover-color: #56616C99;
+    --background-hover-color: #56616C33;
     --secondary-text-color: #75808A;
   }
 }

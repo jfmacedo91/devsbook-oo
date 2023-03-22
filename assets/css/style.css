@@ -14,6 +14,7 @@ body {
   background-color: var(--background-color);
   margin: 0;
   padding-bottom: 3rem;
+  color: var(--primary-text-color);
 }
 
 .container {
@@ -67,7 +68,7 @@ header .head-side {
 .search-area input {
   color: var(--primary-text-color);
   background-color: var(--primary-color);
-  background-image: url("../images/search.png");
+  background-image: url("../images/search.svg");
   background-size: 0.875rem;
   background-position-x: 0.5rem;
   background-position-y: center;
@@ -98,7 +99,7 @@ header .head-side {
 }
 
 .user-area-text {
-  color: var(--background-light-color);
+  color: var(--text-in-primary-color);
   font-size: 0.75rem;
   font-weight: bold;
   margin-right: 0.5rem;
@@ -144,7 +145,7 @@ header .head-side {
 .main aside nav a {
   text-decoration: none;
   display: block;
-  color: var(--primary-color);
+  color: var(--primary-text-color);
   margin-bottom: 0.25rem;
 }
 
