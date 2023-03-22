@@ -13,6 +13,7 @@
       $user->id = $array['id'] ?? 0;
       $user->email = $array['email'] ?? '';
       $user->name = $array['name'] ?? '';
+      $user->password = $array['password'] ?? '';
       $user->birthdate = $array['birthdate'] ?? '';
       $user->city = $array['city'] ?? '';
       $user->work = $array['work'] ?? '';
@@ -74,17 +75,17 @@
     }
 
     public function update(User $user) {
-      $sql = $this->pdo->prepare('UPDATE users SET (
-          email = :email,
-          password = :password,
-          name = :name,
-          birthdate = :birthdate,
-          city = :city,
-          work = :work,
-          avatar = :avatar,
-          cover = :cover,
-          token = :token
-        ) WHERE id = :id');
+      $sql = $this->pdo->prepare('UPDATE users SET
+        email = :email,
+        password = :password,
+        name = :name,
+        birthdate = :birthdate,
+        city = :city,
+        work = :work,
+        avatar = :avatar,
+        cover = :cover,
+        token = :token
+      WHERE id = :id');
       $sql->bindValue(':email', $user->email);
       $sql->bindValue(':password', $user->password);
       $sql->bindValue(':name', $user->name);
