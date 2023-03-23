@@ -16,5 +16,6 @@
     public function findByToken($token);
     public function findByEmail($token);
     public function update(User $user);
+    public function insert(User $user);
   }
 ?>

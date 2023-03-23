@@ -13,22 +13,7 @@
 <section class="feed mt-10">
   <div class="row">
     <div class="column pr-5">
-      <div class="box feed-new">
-        <div class="box-body">
-          <div class="feed-new-editor m-10 row">
-            <div class="feed-new-avatar">
-              <img src="<?= $baseURL; ?>/media/avatars/default.jpg" />
-            </div>
-            <div class="feed-new-input-placeholder">
-              O que você está pensando, Bonieky?
-            </div>
-            <div class="feed-new-input" contenteditable="true"></div>
-            <div class="feed-new-send">
-              <img src="<?= $baseURL; ?>/assets/images/send.svg" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php include 'partials/feed-editor.php'; ?>
 
       <div class="box feed-item">
         <div class="box-body">
