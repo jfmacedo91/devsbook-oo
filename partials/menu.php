@@ -8,7 +8,7 @@
         <div class="menu-item-text">Home</div>
       </div>
     </a>
-    <a href="<?= $baseURL; ?>/perfil">
+    <a href="<?= $baseURL; ?>/perfil.php">
       <div class="menu-item <?= $activeMenu == 'profile' ? 'active' : '' ?>">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/user.svg" width="16" height="16" />
@@ -16,7 +16,7 @@
         <div class="menu-item-text">Meu Perfil</div>
       </div>
     </a>
-    <a href="<?= $baseURL; ?>/amigos?tab=following">
+    <a href="<?= $baseURL; ?>/amigos.php?tab=following">
       <div class="menu-item <?= $activeMenu == 'friends' ? 'active' : '' ?>">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/friends.svg" width="16" height="16" />
@@ -24,7 +24,7 @@
         <div class="menu-item-text">Amigos</div>
       </div>
     </a>
-    <a href="<?= $baseURL; ?>/fotos">
+    <a href="<?= $baseURL; ?>/fotos.php">
       <div class="menu-item <?= $activeMenu == 'photos' ? 'active' : '' ?>">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/photo.svg" width="16" height="16" />
@@ -33,7 +33,7 @@
       </div>
     </a>
     <div class="menu-splitter"></div>
-    <a href="<?= $baseURL; ?>/config">
+    <a href="<?= $baseURL; ?>/config.php">
       <div class="menu-item <?= $activeMenu == 'config' ? 'active' : '' ?>">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/settings.svg" width="16" height="16" />
@@ -41,7 +41,7 @@
         <div class="menu-item-text">Configurações</div>
       </div>
     </a>
-    <a href="<?= $baseURL; ?>/logout">
+    <a href="<?= $baseURL; ?>/logout.php">
       <div class="menu-item">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/power.svg" width="16" height="16" />

@@ -1,11 +1,43 @@
 <?php
   require_once 'models/Post.php';
+  require_once 'dao/RelationshipDaoMysql.php';
+  require_once 'dao/UserDaoMysql.php';
 
   class PostDaoMysql implements PostDAO {
     private $pdo;
 
     public function __construct(PDO $driver) {
       $this->pdo = $driver;
+    }
+
+    private function _postListToObject($postList, $userId) {
+      $posts = [];
+
+      $userDao = new UserDaoMysql($this->pdo);
+
+      foreach($postList as $post) {
+        $newPost = new Post();
+        $newPost->id = $post['id'];
+        $newPost->type = $post['type'];
+        $newPost->created_at = $post['created_at'];
+        $newPost->body = $post['body'];
+        $newPost->mine = false;
+
+        if($post['user_id'] == $userId) {
+          $newPost->mine = true;
+        }
+
+        $newPost->user = $userDao->findById($post['user_id']);
+
+        $newPost->likeCount = 0;
+        $newPost->liked = false;
+
+        $newPost->comments = [];
+
+        $posts[] = $newPost;
+      }
+
+      return $posts;
     }
 
     public function insert(Post $post) {
@@ -19,6 +51,24 @@
       $sql->bindValue(':created_at', $post->created_at);
       $sql->bindValue(':body', $post->body);
       $sql->execute();
+    }
+
+    public function getHomeFeed($userId) {
+      $feed = [];
+
+      $relationshipDao = new RelationshipDaoMysql($this->pdo);
+      $usersList = $relationshipDao->getRelationshipFrom($userId);
+
+      $sql = $this->pdo->query('SELECT * FROM posts
+        WHERE user_id IN ('.implode(',', $usersList).')
+        ORDER BY created_at DESC');
+
+      if($sql->rowCount() > 0) {
+        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $feed = $this->_postListToObject($data, $userId);
+      }
+
+      return $feed;
     }
   }
 ?>

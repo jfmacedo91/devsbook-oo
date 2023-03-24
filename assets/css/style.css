@@ -175,6 +175,7 @@ header .head-side {
 
 .menu-item-text {
   flex: 1;
+  width: max-content;
   font-size: 0.875rem;
 }
 
