@@ -7,6 +7,7 @@
 
   interface RelationshipDAO {
     public function insert(Relationship $relationship);
-    public function getRelationshipFrom($userId);
+    public function getFollowing($userId);
+    public function getFollowers($userId);
   }
 ?>

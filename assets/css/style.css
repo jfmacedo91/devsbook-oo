@@ -327,10 +327,10 @@ header .head-side {
 }
 
 .profile-info-location {
-  color: var(--info-color);
+  color: var(--primary-light-color);
   font-size: 0.875rem;
   text-transform: uppercase;
-  background-image: url("../images/pin.png");
+  background-image: url("../images/pin.svg");
   background-size: auto 1rem;
   background-position: left center;
   background-repeat: no-repeat;
@@ -344,7 +344,7 @@ header .head-side {
 .profile-info-item-n {
   font-weight: bold;
   font-size: 1.25rem;
-  color: var(--primary-color);
+  color: var(--primary-light-color);
 }
 
 .profile-info-item-s {
@@ -356,7 +356,7 @@ header .head-side {
   display: flex;
   align-items: center;
   margin: 1.25rem;
-  color: var(--info-color);
+  color: var(--primary-light-color);
   font-size: 0.875rem;
 }
 
@@ -399,7 +399,7 @@ header .head-side {
   width: 3.75rem;
   font-size: 0.875rem;
   margin: auto;
-  color: var(--primary-color);
+  color: var(--primary-light-color);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

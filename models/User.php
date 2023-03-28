@@ -10,6 +10,9 @@
     public $avatar;
     public $cover;
     public $token;
+    public $followers;
+    public $following;
+    public $photos;
   }
 
   interface UserDAO {

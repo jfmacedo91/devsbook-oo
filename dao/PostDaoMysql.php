@@ -57,7 +57,8 @@
       $feed = [];
 
       $relationshipDao = new RelationshipDaoMysql($this->pdo);
-      $usersList = $relationshipDao->getRelationshipFrom($userId);
+      $usersList = $relationshipDao->getFollowing($userId);
+      $usersList[] = $userId;
 
       $sql = $this->pdo->query('SELECT * FROM posts
         WHERE user_id IN ('.implode(',', $usersList).')
