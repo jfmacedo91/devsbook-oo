@@ -33,7 +33,7 @@
       </div>
     </a>
     <div class="menu-splitter"></div>
-    <a href="<?= $baseURL; ?>/config.php">
+    <a href="<?= $baseURL; ?>/settings.php">
       <div class="menu-item <?= $activeMenu == 'config' ? 'active' : '' ?>">
         <div class="menu-item-icon">
           <img src="<?= $baseURL; ?>/assets/images/settings.svg" width="16" height="16" />

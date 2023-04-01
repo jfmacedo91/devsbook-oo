@@ -1,5 +1,6 @@
 <?php
   require_once 'models/Post.php';
+  require_once 'dao/PostDaoMysql.php';
   require_once 'dao/RelationshipDaoMysql.php';
   require_once 'dao/UserDaoMysql.php';
 
@@ -70,6 +71,40 @@
       }
 
       return $feed;
+    }
+
+    public function getUserFeed($userId) {
+      $feed = [];
+
+      $sql = $this->pdo->prepare("SELECT * FROM posts
+        WHERE user_id = :user_id
+        ORDER BY created_at DESC");
+      $sql->bindValue(':user_id', $userId);
+      $sql->execute();
+
+      if($sql->rowCount() > 0) {
+        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $feed = $this->_postListToObject($data, $userId);
+      }
+
+      return $feed;
+    }
+
+    public function getUserPhotos($userId) {
+      $photos = [];
+
+      $sql = $this->pdo->prepare("SELECT * FROM posts
+      WHERE user_id = :user_id AND type = 'photo'
+      ORDER BY created_at DESC");
+      $sql->bindValue(':user_id', $userId);
+      $sql->execute();
+
+      if($sql->rowCount() > 0) {
+        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $photos = $this->_postListToObject($data, $userId);
+      }
+
+      return $photos;
     }
   }
 ?>
