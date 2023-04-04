@@ -95,6 +95,27 @@
       return false;
     }
 
+    public function findByName($name) {
+      $users = [];
+
+      if(!empty($name)) {
+        $sql = $this->pdo->prepare('SELECT * FROM users WHERE name LIKE :name');
+        $sql->bindValue(':name', "%$name%");
+        $sql->execute();
+
+        if($sql->rowCount() > 0) {
+          $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+          foreach($data as $user) {
+            $users[] = $this->generateUser($user);
+          }
+
+          return $users;
+        }
+      }
+
+      return $users;
+    }
+
     public function insert(User $user) {
       $sql = $this->pdo->prepare('INSERT INTO users (
         email, password, name, birthdate, token
