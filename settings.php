@@ -18,14 +18,21 @@
     <div class="column m-10">
       <h1>Configurações</h1>
       <form class="config-form" action="settings_action.php" enctype="multipart/form-data" method="POST">
+        <?php if(!empty($_SESSION['flash'])): ?>
+          <span class="flash"><?= $_SESSION['flash'] ?></span>
+          <?php $_SESSION['flash'] = ''; ?>
+        <?php endif; ?>
+
         <label>
           Novo avatar:
           <input type="file" name="avatar" />
+          <img  class="preview" src="<?= $baseURL; ?>/media/avatars/<?= $user->avatar; ?>" />
         </label>
 
         <label>
           Novo capa:
           <input type="file" name="cover" />
+          <img  class="preview" src="<?= $baseURL; ?>/media/covers/<?= $user->cover; ?>" />
         </label>
 
         <hr />
@@ -42,7 +49,7 @@
 
         <label>
           Data de nascimento:
-          <input type="text" name="birthdate" value="<?= $user->birthdate; ?>" />
+          <input type="text" name="birthdate" id="birthdate" value="<?= date('d/m/Y', strtotime($user->birthdate)); ?>" />
         </label>
 
         <label>
@@ -72,5 +79,13 @@
     </div>
   </div>
 </section>
+
+<script src="https://unpkg.com/imask"></script>
+<script>
+  IMask(
+    document.getElementById("birthdate"),
+    { mask: '00/00/0000' }
+  );
+</script>
 
 <?php require 'partials/footer.php'; ?>
