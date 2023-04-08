@@ -1,4 +1,6 @@
 <?php
+  require_once 'feed-item-script.php';
+
   $postTypePhrase = '';
   $postBody = '';
 
@@ -14,7 +16,7 @@
   }
 ?>
 
-<div class="box feed-item">
+<div class="box feed-item" data-id="<?= $feedItem->id ?>">
   <div class="box-body">
     <div class="feed-item-head row mt-20 m-width-20">
       <div class="feed-item-head-photo">

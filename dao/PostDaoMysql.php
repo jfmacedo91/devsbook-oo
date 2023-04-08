@@ -1,6 +1,6 @@
 <?php
   require_once 'models/Post.php';
-  require_once 'dao/PostDaoMysql.php';
+  require_once 'dao/PostLikeDaoMysql.php';
   require_once 'dao/RelationshipDaoMysql.php';
   require_once 'dao/UserDaoMysql.php';
 
@@ -15,6 +15,7 @@
       $posts = [];
 
       $userDao = new UserDaoMysql($this->pdo);
+      $postLikeDao = new PostLikeDaoMysql($this->pdo);
 
       foreach($postList as $post) {
         $newPost = new Post();
@@ -30,8 +31,8 @@
 
         $newPost->user = $userDao->findById($post['user_id']);
 
-        $newPost->likeCount = 0;
-        $newPost->liked = false;
+        $newPost->likeCount = $postLikeDao->getLikeCount($post['id']);
+        $newPost->liked = $postLikeDao->isLiked($post['id'], $userId);
 
         $newPost->comments = [];
 
@@ -73,7 +74,7 @@
       return $feed;
     }
 
-    public function getUserFeed($userId) {
+    public function getUserFeed($userId, $loggedUserId) {
       $feed = [];
 
       $sql = $this->pdo->prepare("SELECT * FROM posts
@@ -84,7 +85,7 @@
 
       if($sql->rowCount() > 0) {
         $data = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $feed = $this->_postListToObject($data, $userId);
+        $feed = $this->_postListToObject($data, $loggedUserId);
       }
 
       return $feed;

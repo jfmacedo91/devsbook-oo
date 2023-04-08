@@ -31,7 +31,7 @@
   $dateTo = new DateTime('today');
   $profileUserAge = $dateFrom->diff($dateTo)->y;
 
-  $feed = $postDao->getUserFeed($id);
+  $feed = $postDao->getUserFeed($id, $user->id);
 
   require 'partials/header.php';
   require 'partials/menu.php';
