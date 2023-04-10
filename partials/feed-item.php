@@ -43,23 +43,27 @@
       <div class="msg-btn"><?= count($feedItem->comments); ?></div>
     </div>
     <div class="feed-item-comments">
-      <?php foreach($feedItem->comments as $comment): ?>
-        <div class="fic-item row m-height-10 m-width-20">
-          <div class="fic-item-photo">
-            <a href="<?= $baseURL; ?>/perfil.php?id=<?= $comment->user->id; ?>"><img src="<?= $baseURL; ?>/media/avatars/<?= $comment->user->avatar; ?>" /></a>
+      <div class="feed-item-comments-area">
+        <?php foreach($feedItem->comments as $comment): ?>
+          <div class="fic-item row m-height-10 m-width-20">
+            <div class="fic-item-photo">
+              <a href="<?= $baseURL; ?>/perfil.php?id=<?= $comment->userId; ?>"><img src="<?= $baseURL; ?>/media/avatars/<?= $comment->userAvatar; ?>" /></a>
+            </div>
+            <div class="fic-item-info">
+              <a href="<?= $baseURL; ?>/perfil.php?id=<?= $comment->userId; ?>"><?= $comment->userName; ?></a>
+              <?= $comment->body; ?>
+            </div>
           </div>
-          <div class="fic-item-info">
-            <a href="<?= $baseURL; ?>/perfil.php?id=<?= $comment->user->id; ?>"><?= $comment->user->name; ?></a>
-            <?= $comment->body; ?>
-          </div>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
+      </div>
 
       <div class="fic-answer row m-height-10 m-width-20">
         <div class="fic-item-photo">
           <a href="<?= $baseURL; ?>/perfil.php"><img src="<?= $baseURL; ?>/media/avatars/<?= $user->avatar; ?>" /></a>
         </div>
-        <input type="text" class="fic-item-field" placeholder="Escreva um comentário" />
+        <form class="fic-item-form">
+          <input type="text" class="fic-item-field" placeholder="Escreva um comentário" />
+        </form>
         </div>
       </div>
   </div>

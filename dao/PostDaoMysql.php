@@ -1,5 +1,6 @@
 <?php
   require_once 'models/Post.php';
+  require_once 'dao/PostCommentDaoMysql.php';
   require_once 'dao/PostLikeDaoMysql.php';
   require_once 'dao/RelationshipDaoMysql.php';
   require_once 'dao/UserDaoMysql.php';
@@ -15,6 +16,7 @@
       $posts = [];
 
       $userDao = new UserDaoMysql($this->pdo);
+      $postCommentDao = new PostCommentDaoMysql($this->pdo);
       $postLikeDao = new PostLikeDaoMysql($this->pdo);
 
       foreach($postList as $post) {
@@ -34,7 +36,7 @@
         $newPost->likeCount = $postLikeDao->getLikeCount($post['id']);
         $newPost->liked = $postLikeDao->isLiked($post['id'], $userId);
 
-        $newPost->comments = [];
+        $newPost->comments = $postCommentDao->getComments($post['id']);
 
         $posts[] = $newPost;
       }
