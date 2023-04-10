@@ -338,7 +338,10 @@ header .head-side {
 }
 
 .profile-info-item {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-info-item-n {
@@ -498,23 +501,6 @@ header .head-side {
   border: 1px solid var(--background-color);
 }
 
-.config-form button {
-  border: 0;
-  padding: 0.5rem 1.25rem;
-  background-color: var(--primary-light-color);
-  border-radius: 0.5rem;
-  color: var(--text-in-primary-color);
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  box-shadow: 0px 0px 3px var(--shadow-color);
-  transition: 300ms;
-}
-
-.config-form button:hover {
-  background-color: var(--primary-hover-color);
-}
-
 .config-form .preview {
   width: auto;
   max-height: 6rem;
@@ -529,6 +515,24 @@ header .head-side {
 	border-radius: 10px;
 	color: var(--like-color);
 	background-color: var(--like-color-20);
+}
+
+.button {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 0;
+  border-radius: 0.5rem;
+  color: var(--text-in-primary-color);
+  background-color: var(--primary-light-color);
+  box-shadow: 0px 0px 3px var(--shadow-color);
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primary-hover-color);
 }
 
 @media (max-width: 992px) {

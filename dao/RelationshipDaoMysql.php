@@ -9,7 +9,19 @@
     }
 
     public function insert(Relationship $relationship) {
+      $sql = $this->pdo->prepare("INSERT INTO relationships
+      (user_from, user_to) VALUES (:user_from, :user_to)");
+      $sql->bindValue(':user_from', $relationship->userFrom);
+      $sql->bindValue(':user_to', $relationship->userTo);
+      $sql->execute();
+    }
 
+    public function delete(Relationship $relationship) {
+      $sql = $this->pdo->prepare("DELETE FROM relationships
+      WHERE user_from = :user_from AND user_to = :user_to");
+      $sql->bindValue(':user_from', $relationship->userFrom);
+      $sql->bindValue(':user_to', $relationship->userTo);
+      $sql->execute();
     }
 
     public function getFollowers($userId) {
@@ -44,6 +56,20 @@
       }
 
       return $users;
+    }
+
+    public function isFollowing($loggedUser, $userId) {
+      $sql = $this->pdo->prepare("SELECT * FROM relationships
+      WHERE user_from = :user_from AND user_to = :user_to");
+      $sql->bindValue(':user_from', $loggedUser);
+      $sql->bindValue(':user_to', $userId);
+      $sql->execute();
+
+      if($sql->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 ?>
