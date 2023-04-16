@@ -273,14 +273,26 @@ header .head-side {
   color: var(--secondary-text-color);
 }
 
+.feed-new-photo {
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
 .feed-new-send {
   cursor: pointer;
   margin-right: 0.25rem;
 }
 
+.feed-new-photo img,
 .feed-new-send img {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.feed-new-file {
+  position: absolute;
+  top: -500px;
+  left: -500px;
 }
 
 .banners .box-body {

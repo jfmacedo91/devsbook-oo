@@ -77,7 +77,7 @@
             <div class="full-user-photos">
               <?php foreach($profileUser->photos as $photo): ?>
                 <div class="user-photo-item">
-                  <a href="#modal-<?= $photo->id ?>" rel="modal:open">
+                  <a href="#modal-<?= $photo->id ?>" data-modal-open>
                     <img src="<?= $baseURL ?>/media/uploads/<?= $photo->body; ?>" />
                   </a>
                   <div id="modal-<?= $photo->id ?>" style="display: none">
@@ -94,5 +94,11 @@
     </div>
   </div>
 </section>
+
+<script>
+  window.onload = () => {
+    const modal = new VanillaModal.default();
+  }
+</script>
 
 <?php require 'partials/footer.php'; ?>

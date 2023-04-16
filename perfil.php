@@ -116,15 +116,17 @@
           </div>
         </div>
         <div class="box-body friend-list">
-          <?php foreach($profileUser->following as $following): ?>
-            <div class="friend-icon">
-              <a href="<?= $baseURL; ?>/perfil.php?id=<?= $following->id ?>">
-                <div class="friend-icon-avatar">
-                  <img src="<?= $baseURL; ?>/media/avatars/<?= $following->avatar; ?>" />
-                </div>
-                <div class="friend-icon-name"><?= $following->name; ?></div>
-              </a>
-            </div>
+          <?php foreach($profileUser->following as $key => $following): ?>
+            <?php if($key < 9): ?>
+              <div class="friend-icon">
+                <a href="<?= $baseURL; ?>/perfil.php?id=<?= $following->id ?>">
+                  <div class="friend-icon-avatar">
+                    <img src="<?= $baseURL; ?>/media/avatars/<?= $following->avatar; ?>" />
+                  </div>
+                  <div class="friend-icon-name"><?= $following->name; ?></div>
+                </a>
+              </div>
+            <?php endif; ?>
           <?php endforeach; ?>
         </div>
       </div>
@@ -143,10 +145,11 @@
         <div class="box-body row m-20">
           <?php
             if(count($profileUser->photos) > 0):
-              foreach($profileUser->photos as $photo):
+              foreach($profileUser->photos as $key => $photo):
+                if($key < 4):
           ?>
             <div class="user-photo-item">
-              <a href="#modal-<?= $photo->id; ?>" rel="modal:open">
+              <a href="#modal-<?= $photo->id; ?>" data-modal-open>
                 <img src="<?= $baseURL; ?>/media/uploads/<?= $photo->body; ?>" />
               </a>
               <div id="modal-<?= $photo->id; ?>" style="display: none">
@@ -154,6 +157,7 @@
               </div>
             </div>
           <?php
+                endif;
               endforeach;
             else:
           ?>
@@ -177,5 +181,11 @@
     </div>
   </div>
 </section>
+
+<script>
+  window.onload = () => {
+    const modal = new VanillaModal.default();
+  }
+</script>
 
 <?php require 'partials/footer.php'; ?>
