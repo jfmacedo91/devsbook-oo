@@ -12,5 +12,6 @@
   interface PostCommentDAO {
     public function getComments($postId);
     public function addComments(PostComment $postComment);
+    public function deleteFromPost($postId);
   }
 ?>

@@ -10,5 +10,6 @@
     public function getLikeCount($postId);
     public function isLiked($postId, $userId);
     public function toggleLike($postId, $userId);
+    public function deleteFromPost($postId);
   }
 ?>

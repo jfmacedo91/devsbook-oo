@@ -42,5 +42,11 @@
       $sql->bindValue(':user_id', $userId);
       $sql->execute();
     }
+
+    public function deleteFromPost($postId) {
+      $sql = $this->pdo->prepare("DELETE FROM postlikes WHERE post_id = :post_id");
+      $sql->bindValue(':post_id', $postId);
+      $sql->execute();
+    }
   }
 ?>

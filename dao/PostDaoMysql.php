@@ -57,6 +57,38 @@
       $sql->execute();
     }
 
+    public function delete($postId, $loggedUserId) {
+      $postCommentDao = new PostCommentDaoMysql($this->pdo);
+      $postLikeDao = new PostLikeDaoMysql($this->pdo);
+
+      $sql = $this->pdo->prepare("SELECT * FROM posts WHERE id = :id AND user_id = :user_id");
+      $sql->bindValue(':id', $postId);
+      $sql->bindValue(':user_id', $loggedUserId);
+      $sql->execute();
+
+      if($sql->rowCount() > 0) {
+        $post = $sql->fetch(PDO::FETCH_ASSOC);
+
+        $postCommentDao->deleteFromPost($post['id']);
+        $postLikeDao->deleteFromPost($post['id']);
+
+        if($post['type'] === 'photo') {
+          $image = 'media/uploads/'.$post['body'];
+          
+          if(file_exists($image)) {
+            unlink($image);
+          }
+        }
+
+        $sql = $this->pdo->prepare("DELETE FROM posts WHERE id = :id AND user_id = :user_id");
+        $sql->bindValue(':id', $postId);
+        $sql->bindValue(':user_id', $loggedUserId);
+        $sql->execute();
+      }
+
+      
+    }
+
     public function getHomeFeed($userId) {
       $feed = [];
 

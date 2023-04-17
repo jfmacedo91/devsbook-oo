@@ -32,6 +32,9 @@
       <?php if($feedItem->mine): ?>
         <div class="feed-item-head-btn">
           <img src="<?= $baseURL; ?>/assets/images/more.svg" />
+          <div class="feed-item-more-window">
+            <a href="<?= $baseURL ?>/delete_post_action.php?id=<?= $feedItem->id ?>">Excluir postagem</a>
+          </div>
         </div>
       <?php endif; ?>
     </div>

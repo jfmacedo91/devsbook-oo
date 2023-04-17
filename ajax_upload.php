@@ -45,7 +45,7 @@
         $newWidth, $newHeight, $originalWidth, $originalHeight
       );
 
-      $photoName = md5(time().mt_rand(0, 9999).'.jpg');
+      $photoName = md5(time().mt_rand(0, 9999)).'.jpg';
       imagejpeg($finalImage, "media/uploads/$photoName");
 
       $newPost = new Post();

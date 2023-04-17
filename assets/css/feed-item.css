@@ -31,8 +31,32 @@
 }
 
 .feed-item-head-btn {
+  position: relative;
   margin-right: 0.25rem;
   cursor: pointer;
+}
+
+.feed-item-more-window {
+  position: absolute;
+  right: 0;
+  display: none;
+  width: max-content;
+  padding: 0.25rem 0.25rem;
+  border: 1px solid var(--lines-color);
+  border-radius: 0.25rem;
+  background-color: var(--background-color);
+}
+
+.feed-item-more-window a {
+  display: block;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: 200ms;
+}
+
+.feed-item-more-window a:hover {
+  background-color: var(--background-light-color);
 }
 
 .feed-item-head-btn img {

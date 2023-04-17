@@ -14,6 +14,7 @@
 
   interface PostDAO {
     public function insert(Post $post);
+    public function delete($postId, $loggedUserId);
     public function getHomeFeed($userId);
     public function getUserFeed($userId, $loggedUserId);
     public function getUserPhotos($userId);

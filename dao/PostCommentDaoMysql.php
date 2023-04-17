@@ -47,5 +47,11 @@
       $sql->bindValue(':body', $postComment->body);
       $sql->execute();
     }
+
+    public function deleteFromPost($postId) {
+      $sql = $this->pdo->prepare("DELETE FROM postcomments WHERE post_id = :post_id");
+      $sql->bindValue(':post_id', $postId);
+      $sql->execute();
+    }
   }
 ?>
