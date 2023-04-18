@@ -91,19 +91,33 @@
 
     public function getHomeFeed($userId) {
       $feed = [];
+      $perpage = 5;
+      $page = filter_input(INPUT_GET, 'page');
+      if($page < 1) {
+        $page = 1;
+      }
+      $offset = ($page - 1) * $perpage;
 
       $relationshipDao = new RelationshipDaoMysql($this->pdo);
       $usersList = $relationshipDao->getFollowing($userId);
       $usersList[] = $userId;
 
-      $sql = $this->pdo->query('SELECT * FROM posts
-        WHERE user_id IN ('.implode(',', $usersList).')
-        ORDER BY created_at DESC');
+      $sql = $this->pdo->query("SELECT * FROM posts
+        WHERE user_id IN (".implode(",", $usersList).")
+        ORDER BY created_at DESC LIMIT $offset, $perpage");
 
       if($sql->rowCount() > 0) {
         $data = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $feed = $this->_postListToObject($data, $userId);
+        $feed['feed'] = $this->_postListToObject($data, $userId);
       }
+
+      $sql = $this->pdo->query("SELECT COUNT(*) AS count FROM posts
+      WHERE user_id IN (".implode(",", $usersList).")");
+      $totalData = $sql->fetch();
+      $total = $totalData['count'];
+
+      $feed['pages'] = ceil($total / $perpage);
+      $feed['currentPage'] = $page;
 
       return $feed;
     }

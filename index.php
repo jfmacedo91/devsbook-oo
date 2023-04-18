@@ -8,7 +8,10 @@
   $activeMenu = 'home';
 
   $postDao = new PostDaoMysql($pdo);
-  $feed = $postDao->getHomeFeed($user->id);
+  $feedContent = $postDao->getHomeFeed($user->id);
+  $feed = $feedContent['feed'];
+  $pages = $feedContent['pages'];
+  $currentPage = $feedContent['currentPage'];
 
   require 'partials/header.php';
   require 'partials/menu.php';
@@ -23,7 +26,14 @@
           require 'partials/feed-item.php';
         }
       ?>
+      
+      <div class="feed-pagination">
+        <?php for($index = 0; $index < $pages; $index++): ?>
+          <a class="<?= $index + 1 == $currentPage ? 'active' : '' ?>" href="<?= $baseURL; ?>/?page=<?= $index + 1 ?>"><?= $index + 1 ?></a>
+        <?php endfor; ?>
+      </div>
     </div>
+
 
     <div class="column side pl-5">
       <div class="box banners">

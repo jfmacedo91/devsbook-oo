@@ -295,6 +295,29 @@ header .head-side {
   left: -500px;
 }
 
+.feed-pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feed-pagination a {
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;
+  border: 1px solid var(--lines-dark-color);
+  border-radius: 0.25rem;
+  color: inherit;
+  background-color: var(--background-color);
+  transition: 200ms;
+}
+
+.feed-pagination a:hover {
+  background-color: var(--background-hover-color);
+}
+
+.feed-pagination a.active {
+  background-color: var(--background-light-color);
+}
+
 .banners .box-body {
   margin: 0 0.5rem 0.5rem 0.5rem;
 }
