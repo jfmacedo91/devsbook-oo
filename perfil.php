@@ -33,7 +33,10 @@
   $dateTo = new DateTime('today');
   $profileUserAge = $dateFrom->diff($dateTo)->y;
 
-  $feed = $postDao->getUserFeed($id, $user->id);
+  $feedContent = $postDao->getUserFeed($id, $user->id);
+  $feed = $feedContent['feed'];
+  $pages = $feedContent['pages'];
+  $currentPage = $feedContent['currentPage'];
 
   $isFollowing = $relationshipDao->isFollowing($user->id, $id);
 
@@ -178,6 +181,12 @@
           echo 'Nenhuma postagem para ser exibida!';
         }
       ?>
+
+      <div class="feed-pagination">
+        <?php for($index = 0; $index < $pages; $index++): ?>
+          <a class="<?= $index + 1 == $currentPage ? 'active' : '' ?>" href="<?= $baseURL; ?>/perfil.php?id=<?= $id ?>&page=<?= $index + 1 ?>"><?= $index + 1 ?></a>
+        <?php endfor; ?>
+      </div>
     </div>
   </div>
 </section>

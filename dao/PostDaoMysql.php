@@ -90,7 +90,7 @@
     }
 
     public function getHomeFeed($userId) {
-      $feed = [];
+      $feed = ['feed' => []];
       $perpage = 5;
       $page = filter_input(INPUT_GET, 'page');
       if($page < 1) {
@@ -123,18 +123,34 @@
     }
 
     public function getUserFeed($userId, $loggedUserId) {
-      $feed = [];
+      $feed = ['feed' => []];
+      $perpage = 5;
+      $page = filter_input(INPUT_GET, 'page');
+      if($page < 1) {
+        $page = 1;
+      }
+      $offset = ($page - 1) * $perpage;
 
       $sql = $this->pdo->prepare("SELECT * FROM posts
         WHERE user_id = :user_id
-        ORDER BY created_at DESC");
+        ORDER BY created_at DESC LIMIT $offset, $perpage");
       $sql->bindValue(':user_id', $userId);
       $sql->execute();
 
       if($sql->rowCount() > 0) {
         $data = $sql->fetchAll(PDO::FETCH_ASSOC);
-        $feed = $this->_postListToObject($data, $loggedUserId);
+        $feed['feed'] = $this->_postListToObject($data, $loggedUserId);
       }
+
+      $sql = $this->pdo->prepare("SELECT COUNT(*) AS count FROM posts
+        WHERE user_id = :user_id");
+      $sql->bindValue(':user_id', $userId);
+      $sql->execute();
+      $totalData = $sql->fetch();
+      $total = $totalData['count'];
+
+      $feed['pages'] = ceil($total / $perpage);
+      $feed['currentPage'] = $page;
 
       return $feed;
     }
