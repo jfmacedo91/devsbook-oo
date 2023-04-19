@@ -7,8 +7,13 @@
   $user = $auth->checkToken();
   $activeMenu = 'home';
 
+  $page = filter_input(INPUT_GET, 'page');
+  if($page < 1) {
+    $page = 1;
+  }
+
   $postDao = new PostDaoMysql($pdo);
-  $feedContent = $postDao->getHomeFeed($user->id);
+  $feedContent = $postDao->getHomeFeed($user->id, $page);
   $feed = $feedContent['feed'];
   $pages = $feedContent['pages'];
   $currentPage = $feedContent['currentPage'];

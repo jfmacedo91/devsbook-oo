@@ -89,13 +89,9 @@
       
     }
 
-    public function getHomeFeed($userId) {
+    public function getHomeFeed($userId, $page = 1) {
       $feed = ['feed' => []];
       $perpage = 5;
-      $page = filter_input(INPUT_GET, 'page');
-      if($page < 1) {
-        $page = 1;
-      }
       $offset = ($page - 1) * $perpage;
 
       $relationshipDao = new RelationshipDaoMysql($this->pdo);
@@ -122,13 +118,9 @@
       return $feed;
     }
 
-    public function getUserFeed($userId, $loggedUserId) {
+    public function getUserFeed($userId, $loggedUserId, $page = 1) {
       $feed = ['feed' => []];
       $perpage = 5;
-      $page = filter_input(INPUT_GET, 'page');
-      if($page < 1) {
-        $page = 1;
-      }
       $offset = ($page - 1) * $perpage;
 
       $sql = $this->pdo->prepare("SELECT * FROM posts

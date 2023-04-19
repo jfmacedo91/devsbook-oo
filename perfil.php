@@ -9,6 +9,10 @@
   $activeMenu = '';
 
   $id = filter_input(INPUT_GET, 'id');
+  $page = filter_input(INPUT_GET, 'page');
+  if($page < 1) {
+    $page = 1;
+  }
 
   if(!$id) {
     $id = $user->id;
@@ -33,7 +37,7 @@
   $dateTo = new DateTime('today');
   $profileUserAge = $dateFrom->diff($dateTo)->y;
 
-  $feedContent = $postDao->getUserFeed($id, $user->id);
+  $feedContent = $postDao->getUserFeed($id, $user->id, $page);
   $feed = $feedContent['feed'];
   $pages = $feedContent['pages'];
   $currentPage = $feedContent['currentPage'];
