@@ -1,5 +1,5 @@
 <script>
-  window.onload = function() {
+  window.addEventListener('load', () => {
     function closeFeedWindow() {
       document.querySelectorAll('.feed-item-more-window').forEach(item=>{
         item.style.display = 'none';
@@ -77,5 +77,5 @@
         }
       });
     });
-  };
+  });
 </script>
